@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc_widget_sample/src/pages/bloc_builder_page.dart';
 import 'package:flutter_bloc_widget_sample/src/pages/bloc_consumer_page.dart';
 import 'package:flutter_bloc_widget_sample/src/pages/bloc_listener_page.dart';
-import 'package:flutter_bloc_widget_sample/src/pages/bloc_provider_page%20copy%203.dart';
+import 'package:flutter_bloc_widget_sample/src/pages/multi_repository_provider_page.dart';
 import 'package:flutter_bloc_widget_sample/src/pages/bloc_provider_page.dart';
 import 'package:flutter_bloc_widget_sample/src/pages/bloc_selector_page.dart';
 import 'package:flutter_bloc_widget_sample/src/pages/multi_bloc_provider_page.dart';
