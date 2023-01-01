@@ -14,7 +14,6 @@ class _BlocProviderPageState extends State<BlocProviderPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SampleBloc(),
-      lazy: false,
       child: SamplePage(),
     );
   }

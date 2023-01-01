@@ -48,11 +48,11 @@ class SamplePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: BlocConsumer<SampleBloc, int>(
+          listenWhen: (previous, current) => current > 5,
           listener: (context, state) {
-            if (state > 5) {
-              _showMessage(context);
-            }
+            _showMessage(context);
           },
+          buildWhen: (previous, current) => current % 2 == 0,
           builder: (context, state) => Text(
             state.toString(),
             style: const TextStyle(fontSize: 70),

@@ -38,6 +38,7 @@ class SamplePage extends StatelessWidget {
               },
             ),
             BlocBuilder<BlocSelectorBloc, BlocSelectorState>(
+              buildWhen: (previous, current) => current.changeState,
               builder: (context, state) {
                 print('bloc builder');
                 return Text(

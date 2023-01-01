@@ -20,34 +20,45 @@ class _BlocListenerPageState extends State<BlocListenerPage> {
 }
 
 class SamplePage extends StatelessWidget {
+  late SampleBloc sampleBloc;
+
+  void _showMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext _) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          title: const Text('Title'),
+          content: BlocBuilder<SampleBloc, int>(
+            bloc: sampleBloc,
+            builder: (context, state) {
+              return Text(state.toString());
+            },
+          ),
+          actions: [
+            ElevatedButton(
+              child: const Text("확인"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    sampleBloc = context.read<SampleBloc>();
     return Scaffold(
       body: Center(
         child: BlocListener<SampleBloc, int>(
+          listenWhen: (previous, current) => current > 5,
           listener: (context, state) {
-            if (state > 5) {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    title: const Text('Title'),
-                    content: const Text('Dialog Content'),
-                    actions: [
-                      ElevatedButton(
-                        child: const Text("확인"),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
+            _showMessage(context);
           },
           child: Text(
             context.read<SampleBloc>().state.toString(),
