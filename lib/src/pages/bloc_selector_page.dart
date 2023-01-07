@@ -31,9 +31,10 @@ class SamplePage extends StatelessWidget {
               selector: (state) => state.changeState,
               builder: (context, state) {
                 print('selector builder');
-                return Text(
-                  state.toString(),
-                  style: const TextStyle(fontSize: 70),
+                return Icon(
+                  Icons.favorite,
+                  color: state ? Colors.red : Colors.grey,
+                  size: 50,
                 );
               },
             ),

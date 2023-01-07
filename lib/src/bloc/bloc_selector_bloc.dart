@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
 class BlocSelectorBloc extends Bloc<BlocSelectorEvent, BlocSelectorState> {
   BlocSelectorBloc() : super(BlocSelectorState()) {
@@ -17,7 +18,7 @@ class ChangeStateEvent extends BlocSelectorEvent {}
 
 class ValueEvent extends BlocSelectorEvent {}
 
-class BlocSelectorState {
+class BlocSelectorState extends Equatable {
   final bool changeState;
   final int value;
   BlocSelectorState({this.changeState = false, this.value = 0});
@@ -31,4 +32,7 @@ class BlocSelectorState {
       value: value ?? this.value,
     );
   }
+
+  @override
+  List<Object?> get props => [value, changeState];
 }

@@ -58,11 +58,11 @@ class SamplePage extends StatelessWidget {
       body: Center(
         child: BlocBuilder<SampleBloc, int>(
           buildWhen: (previous, current) {
-            return current < 10;
+            return current > 10;
           },
           builder: (context, state) {
             return Text(
-              state.toString(),
+              'index : $state',
               style: const TextStyle(fontSize: 70),
             );
           },

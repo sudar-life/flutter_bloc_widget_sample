@@ -60,11 +60,25 @@ class SamplePage extends StatelessWidget {
           listener: (context, state) {
             _showMessage(context);
           },
-          child: Text(
-            context.read<SampleBloc>().state.toString(),
-            style: const TextStyle(fontSize: 70),
-          ),
+          child: BlocBuilder<SampleBloc, int>(
+              buildWhen: (previous, current) => current > 5,
+              builder: (context, state) {
+                return Text(
+                  state.toString(),
+                  style: const TextStyle(fontSize: 70),
+                );
+              }),
         ),
+        // child: BlocListener<SampleBloc, int>(
+        //   listenWhen: (previous, current) => current > 5,
+        //   listener: (context, state) {
+        //     _showMessage(context);
+        //   },
+        //   child: Text(
+        //     context.read<SampleBloc>().state.toString(),
+        //     style: const TextStyle(fontSize: 70),
+        //   ),
+        // ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
